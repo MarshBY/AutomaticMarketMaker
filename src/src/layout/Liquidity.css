@@ -1,0 +1,25 @@
+.body_container {
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.liquidity_container {
+    padding: 14px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.liquidity_container h3{
+    width: 100%;
+    text-align: left;
+}
+
+.liquidity_tab {
+    display: flex;
+}
