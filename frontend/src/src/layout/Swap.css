@@ -1,0 +1,51 @@
+.body_container {
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swap_container {
+    padding: 14px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.swap_container h3{
+    width: 100%;
+    text-align: left;
+}
+
+.swaps {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.arrow_container {
+    position: absolute;
+    top: 40px;
+    background-color: #282828;
+    border-radius: 12px;
+    z-index: 100;
+    padding: 1px;
+    width: 24px;
+    height: 24px;
+    border: solid 3px #101010;
+}
+
+.stepper {
+    position: absolute;
+    left: 50px;
+    user-select: none;
+}
+
+.stepper h3 {
+    color: white;
+}

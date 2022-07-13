@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+.main_container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  background-color: #353535;
+}
