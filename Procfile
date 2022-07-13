@@ -1,0 +1,1 @@
+web: cd frontend/src && npm run build && node server.js
