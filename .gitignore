@@ -6,8 +6,9 @@ typechain
 
 #Hardhat files
 cache
-artifacts
-
+blockchain/artifacts
+frontend/src/artifacts/@openzeppelin
+frontend/src/artifacts/build-info
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
