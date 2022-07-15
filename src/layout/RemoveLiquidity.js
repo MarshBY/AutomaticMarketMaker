@@ -17,13 +17,13 @@ const RemoveLiquidity = () => {
 
     const [step, setStep] = useState(0);
 
-    const [pool, setPool] = useState('');
+    const [pool, setPool] = useState(' ');
 
     const signer = useSigner();
 
     const { address } = useAccount();
 
-    const { data: bal, refetch } = useBalance({
+    const { data: bal } = useBalance({
         addressOrName: address,
         token: pool
     })
