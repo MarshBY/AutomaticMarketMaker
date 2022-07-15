@@ -1,0 +1,31 @@
+.token_selector_container {
+    padding: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.token_selector {
+    background-color: #353535;
+    width: 40%;
+    border-radius: 10px;
+    padding: 5px 0;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.token_selector:hover {
+    background-color: #454545;
+}
+
+.selected {
+    background-color: #606060;
+}
+
+.selected:hover {
+    background-color: #606060;
+}

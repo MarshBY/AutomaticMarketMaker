@@ -30,7 +30,7 @@
 
 .arrow_container {
     position: absolute;
-    top: 40px;
+    top: 42px;
     background-color: #282828;
     border-radius: 12px;
     z-index: 100;
@@ -38,12 +38,14 @@
     width: 24px;
     height: 24px;
     border: solid 3px #101010;
+    cursor: pointer;
 }
 
 .stepper {
     position: absolute;
     left: 50px;
     user-select: none;
+    max-width: 300px;
 }
 
 .stepper h3 {

@@ -31,7 +31,7 @@ contract AMM is ERC20{
     function addLiquidity(uint _amount1, uint _amount2) external {
         if(reserves2 > 0){
             //Check Liq ratio is correct
-            require(_amount2 == requiredAmount(_amount1));
+            require(_amount2 == requiredAmount(_amount1, true));
         }
 
         //No need to check allowance as it will revert, frontend should check allowance before sending tx
@@ -117,9 +117,12 @@ contract AMM is ERC20{
         }
     }
 
-    //ALWAYS checks for required of second token (_amount2)
-    function requiredAmount(uint _amount1) public view returns(uint) {
-        return(_amount1 * reserves2 / reserves1);
+    function requiredAmount(uint _amount, bool _direction) public view returns(uint) {
+        if(_direction) { // returns How much of Token2 required
+            return(_amount * reserves2 / reserves1);
+        }else{ //returns How much of Token1 required
+            return(_amount * reserves1 / reserves2);
+        }
     }
 
 
