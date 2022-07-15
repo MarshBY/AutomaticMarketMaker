@@ -23,3 +23,25 @@
 .liquidity_tab {
     display: flex;
 }
+
+.token {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+    min-width: 300px;
+}
+
+.token_select {
+    position: absolute;
+    right: 10px;
+    background-color: #1D858D;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 12px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    max-width: 100px;
+    overflow: hidden;
+}

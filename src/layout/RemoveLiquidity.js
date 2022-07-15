@@ -1,11 +1,13 @@
-import { Button, Paper, TextField } from "@mui/material";
+import { Button, MenuItem, Paper, TextField } from "@mui/material";
 import './RemoveLiquidity.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import constants from "../constants";
-import { useSigner, useBalance, useAccount } from "wagmi";
-import AMM from '../AMM.json';
+import { useSigner, useBalance, useAccount, useProvider } from "wagmi";
+import AMM from '../artifacts/contracts/AMM.sol/AMM.json';
 import { ethers } from "ethers";
 import { Step, StepLabel, Stepper } from '@mui/material';
+import { getPoolList } from "../utils/list";
+import PoolChooser from "../components/PoolChooser";
 
 const RemoveLiquidity = () => {
 
@@ -15,17 +17,19 @@ const RemoveLiquidity = () => {
 
     const [step, setStep] = useState(0);
 
+    const [pool, setPool] = useState('');
+
     const signer = useSigner();
 
     const { address } = useAccount();
 
-    const { data: bal } = useBalance({
+    const { data: bal, refetch } = useBalance({
         addressOrName: address,
-        token: constants.contract
+        token: pool
     })
 
     const updateAmounts = async () => {
-        const contract = new ethers.Contract(constants.contract, AMM.abi, signer.data);
+        const contract = new ethers.Contract(pool, AMM.abi, signer.data);
         const ratio = (lp * 100) / await contract.totalSupply();
 
         setVal1(await contract.reserves1() * ratio / 100);
@@ -37,7 +41,7 @@ const RemoveLiquidity = () => {
 
         setStep(1);
 
-        const contract = new ethers.Contract(constants.contract, AMM.abi, signer.data);
+        const contract = new ethers.Contract(pool, AMM.abi, signer.data);
 
         const total = await contract.totalSupply()
         console.log('LP', ethers.utils.parseEther(lp).toString());
@@ -57,7 +61,8 @@ const RemoveLiquidity = () => {
             <Paper elevation={3} sx={{ backgroundColor: '#151515' }}>
                 <div className="liquidity_container">
                     <h3>Remove Liquidity</h3>
-                    <h5>Your LP tokens: {ethers.utils.formatEther(bal.value).toString()}</h5>
+                    <PoolChooser setPool={setPool} />
+                    <h5>Your LP tokens: {bal && ethers.utils.formatEther(bal.value).toString()}</h5>
                     <div className="token_holder">
                     <TextField onBlur={updateAmounts} fullWidth type='number' label='Tokens to burn' value={lp} onChange={e => {setLP(e.target.value); setStep(0);}} sx={{ marginBottom: '8px', backgroundColor: '#202020' }}></TextField>
                     <Button variant="outlined" sx={{marginLeft:'5px'}} onClick={() => {setLP(ethers.utils.formatEther(bal.value)); updateAmounts();}}>Max</Button>
