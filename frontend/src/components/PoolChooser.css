@@ -4,3 +4,7 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.pool_selector h4{
+    margin-right: 10px;
+}

@@ -29,7 +29,12 @@ const PoolInfo = () => {
     const updateInfo = async () => {
         const contract = new ethers.Contract(pool, AMM.abi, signer.data);
 
-        setTotalSupply(await contract.totalSupply());
+        try{
+            const ts = await contract.totalSupply();
+            setTotalSupply(ts);
+        }catch(err){
+            setTotalSupply(0);
+        }
 
         //Set tokens
         const token1 = await contract.token1();

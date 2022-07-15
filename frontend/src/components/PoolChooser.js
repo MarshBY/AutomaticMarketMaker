@@ -9,7 +9,6 @@ const PoolChooser = (props) => { //setPool
     const [pools, setPools] = useState([]);
     const provider = useProvider();
 
-
     useEffect(() => {
         async function a () {
             setPools(await getPoolList(provider));
@@ -25,8 +24,12 @@ const PoolChooser = (props) => { //setPool
                 label='Pool'
                 variant="outlined"
                 //value={props.pool}
+                defaultValue={' '}
                 onChange={e => { props.setPool(e.target.value); console.log('NewPool', e.target.value) }}
             >
+                <MenuItem key={-1} value={' '}>
+                    Select Option
+                </MenuItem>
                 {pools.length > 0 && pools.map((p, i) => (
                     <MenuItem key={i} value={p}>
                         Option {i}
