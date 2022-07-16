@@ -28,9 +28,9 @@ Some of these functions take a bool `_direction` as an argument. This argument d
 
 ### AMMFactory contract
 
-It has a public mapping `pools` which stores the addresses of all created pools. It maps both ways each token's address. Meaning that `pools(token1.address, token2.address)` whill return the same as `pools(token2.address, token1.address)`
+It has a public mapping `pools` which stores the addresses of all created pools. It maps both ways each token's address. Meaning that `pools(token1.address, token2.address)` will return the same as `pools(token2.address, token1.address)`
 
-Then it has a function `createPool` which takes the two tokens' addresses as arguments and emits a log `PoolCreated`
+Then it has a function `createPool` which takes the two tokens' addresses as arguments and emits a log `PoolCreated(pool.address, token1.address, token2.address)`
 
 
 ## Cloning
